@@ -1,4 +1,5 @@
 var hostIP;
+var socekt;
 
 $(function() 
 {
@@ -34,12 +35,7 @@ function updateThisIPAdress(ip)
 function connectToHost()
 {
 	// Create WebSocket connection.
-	const socket = new WebSocket("ws://"+hostIP+":8080");
-
-	// Connection opened
-	socket.addEventListener('open', function (event) {
-		socket.send('Hello Server!');
-	});
+	socket = new WebSocket("ws://"+hostIP+":8080");
 
 	// Listen for messages
 	socket.addEventListener('message', function (event) {
@@ -49,5 +45,7 @@ function connectToHost()
 
 function sendMessage()
 {
+	var message = $("#message").val();
 	
+	socket.send(message);
 }
