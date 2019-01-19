@@ -35,7 +35,7 @@ function updateThisIPAdress(ip)
 function connectToHost()
 {
 	// Create WebSocket connection.
-	socket = new WebSocket("ws://"+hostIP+":8080");
+	socket = new WebSocket("wss://"+hostIP+":8080");
 
 	// Listen for messages
 	socket.addEventListener('message', function (event) {
