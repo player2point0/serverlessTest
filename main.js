@@ -1,3 +1,6 @@
+//needs a dedicated server to work
+//change to p2p
+
 var hostIP;
 var socekt;
 
@@ -36,7 +39,12 @@ function connectToHost()
 {
 	// Create WebSocket connection.
 	socket = new WebSocket("wss://"+hostIP+":8080");
-
+	
+	// Log errors
+	socket.onerror = function (error) {
+	  console.log('WebSocket Error ' + error);
+	};	
+	
 	// Listen for messages
 	socket.addEventListener('message', function (event) {
 		console.log('Message from server ', event.data);
